@@ -13,12 +13,12 @@
 
 pkgname=surfacepro7-camera-ir-ipu4-ov5693-ov8865-ov7251-7x
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Surface Pro 7 IPU4/IPU4P camera + IR drivers (intel_ipu4 core/ISYS/PSYS/MMU/CSI2, ov5693, ov8865, ov7251 IR, SP7 ACPI glue) - basic x86-64 build"
 arch=('x86_64')
 url="https://github.com/linux-surface/linux-surface"
 license=('GPL-2.0-only')
-depends=('linux')
+depends=('linux-surface')
 optdepends=('v4l-utils: 测试工具 (v4l2-ctl / media-ctl)')
 conflicts=('surfacepro7-camera-ir-ipu4-ov5693-ov8865-ov7251-7x-v4')
 provides=('surfacepro7-camera-ir')
