@@ -272,7 +272,12 @@ int ipu_isys_csi2_error(struct ipu_isys_csi2 *csi2)
 
 	/* Register errors once more in case of error interrupts are disabled */
 	ipu4p_isys_register_errors(csi2);
-	ipu4p_csi2_log_rx_state(csi2, "error snapshot");
+	/*
+	 * This runs for every frame; only snapshot the receiver when it has
+	 * actually reported errors, or a healthy stream floods the log.
+	 */
+	if (READ_ONCE(csi2->receiver_errors))
+		ipu4p_csi2_log_rx_state(csi2, "error snapshot");
 	spin_lock_irqsave(&csi2->receiver_error_lock, flags);
 	status = csi2->receiver_errors;
 	csi2->receiver_errors = 0;
